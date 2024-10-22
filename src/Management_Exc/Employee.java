@@ -12,6 +12,7 @@ public class Employee extends Person {
      */
     public Employee(String name, int age, double salary)  {
         super(name, age);
+        setSalary(salary);
     }
 
     public double getSalary() {

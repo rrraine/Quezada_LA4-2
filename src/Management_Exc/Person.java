@@ -10,10 +10,10 @@ public abstract class Person {
      * @param age the age of the person
      * @throws IllegalArgumentException when age is negative
      */
-    public Person(String name, int age) {
+    public Person(String name, int age) throws IllegalArgumentException {
         this.name = name;
         if (age < 0){
-            throw new IllegalArgumentException("Age must be non-negative");
+            throw new IllegalArgumentException("Age must be non-negative.");
         }
         this.age = age;
     }

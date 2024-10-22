@@ -21,7 +21,6 @@ public class Main {
         }
 
         Manager m = null;
-        Employee e = null;
 
         for (Person p : persons){
             if (p.getName().equals(manager)){
@@ -34,12 +33,16 @@ public class Main {
             }
         }
 
+        Employee e = null;
+
         for (Person p1 : persons){
             if(p1.getName().equals(employee)){
-                e = (Employee)p1;
-                break;
-            } else {
-                throw new ClassCastException(employee + " is not an employee");
+                if (p1 instanceof Employee){
+                    e = (Employee) p1;
+                    break;
+                } else {
+                    throw new ClassCastException(employee + " is not an employee");
+                }
             }
         }
 
