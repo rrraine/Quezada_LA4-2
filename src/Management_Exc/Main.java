@@ -16,7 +16,43 @@ public class Main {
      * @throws NoSuchElementException when given manager or employee does not exist in the list of persons
      */
     public static void giveRaise(List<Person> persons, String manager, String employee, double salary)  {
+        if (salary <= 0) {
+            throw new IllegalArgumentException("Raise must be non-negative");
+        }
 
+        Manager m = null;
+        Employee e = null;
+        for (Person p : persons) {
+            if (p.getName().equals(manager)) {
+                if (p instanceof Manager) {
+                    m = (Manager)p;
+                    break;
+                } else {
+                    throw new ClassCastException(manager + " is not a manager");
+                }
+            }
+        }
+
+        for (Person p1 : persons) {
+            if (p1.getName().equals(employee)) {
+                if (p1 instanceof Employee) {
+                    e = (Employee)p1;
+                    break;
+                } else {
+                    throw new ClassCastException(employee + " is not an employee");
+                }
+            }
+        }
+
+        if (m == null) {
+            throw new NoSuchElementException(manager + " does not exist");
+        }
+
+        if (e == null) {
+            throw new NoSuchElementException(employee + " does not exist");
+        }
+
+        m.giveRaise(e, salary);
     }
 
     /**
